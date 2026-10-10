@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="210mm" height="297mm" viewBox="0 0 210 297" role="img" aria-labelledby="titulo">
+  <title id="titulo">Papel timbrado Conta Comigo — A4</title>
+  <defs>
+    <g id="canto">
+      <path d="M8 8H40L38 10H10V20L8 22Z" fill="#DDEBE5"/>
+      <path d="M12 8H26V8.7H12Z" fill="#8BBEAE"/>
+    </g>
+  </defs>
+  <use href="#canto"/>
+  <use href="#canto" transform="translate(210 297) rotate(180)"/>
+</svg>

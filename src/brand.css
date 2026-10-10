@@ -1,0 +1,66 @@
+/* Conta Comigo: cores e fonte locais compartilhadas pelas telas. */
+@font-face {
+  font-family: "Noto Sans";
+  src: url("/fonts/NotoSans-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Noto Sans";
+  src: url("/fonts/NotoSans-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Noto Sans";
+  src: url("/fonts/NotoSans-Italic.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 400 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Noto Sans";
+  src: url("/fonts/NotoSans-BoldItalic.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 600 900;
+  font-display: swap;
+}
+:root {
+  --brand-primary: #155B57;
+  --brand-accent: #77BBDD;
+  --brand-background: #F6F7F9;
+  --brand-surface: #FFFFFF;
+  --brand-text: #18343C;
+  --brand-muted: #526B70;
+  --brand-soft: #F2F4F6;
+  --brand-soft-blue: #E9F4FA;
+  --brand-border: #D9DFE4;
+  --brand-border-control: #78948F;
+  --brand-muted-disabled: #7B8F93;
+  --brand-surface-disabled: #F1F5F3;
+  --brand-sidebar-end: #18343C;
+  --brand-sidebar-support: #1B6D66;
+  --brand-nav-text: #F7FAF8;
+  --brand-nav-muted: #D3E9E4;
+  --brand-nav-hover: rgba(247, 250, 248, .09);
+  --brand-nav-selected: #EAF3EF;
+  --brand-nav-indicator: #8BBEAE;
+  --brand-focus: #155B57;
+  --brand-shadow-soft: rgba(24, 52, 60, .03);
+  --brand-shadow-light: rgba(24, 52, 60, .07);
+  --brand-shadow: rgba(24, 52, 60, .16);
+  --brand-shadow-strong: rgba(24, 52, 60, .28);
+  --brand-overlay: rgba(24, 52, 60, .5);
+  --brand-focus-halo: rgba(21, 91, 87, .12);
+  --brand-font: "Noto Sans", "Segoe UI", Arial, sans-serif;
+
+  /* Compatibilidade com os componentes que já usam estes tokens. */
+  --primary: var(--brand-primary);
+  --blue: var(--brand-primary);
+  --border: var(--brand-border);
+  --text: var(--brand-text);
+  --muted: var(--brand-muted);
+  --font: var(--brand-font);
+}

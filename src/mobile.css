@@ -1,0 +1,1171 @@
+/* Mobile: uma tarefa por área, sem dividir lista e detalhe na mesma altura. */
+.mobile-back-details,
+.mobile-filter-toggle {
+  display: none;
+}
+.filter-controls {
+  display: contents;
+}
+.sidebar-close,
+.template-mobile-tabs {
+  display: none;
+}
+.native-modal {
+  overflow: hidden;
+  margin: 0;
+  width: 100%;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  border: 0;
+  color: inherit;
+}
+.native-modal:not([open]) {
+  display: none;
+}
+.native-modal::backdrop {
+  background: transparent;
+}
+.mobile-detail-dialog {
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  width: 100%;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  background: var(--brand-surface);
+  color: inherit;
+}
+.mobile-detail-dialog::backdrop {
+  background: var(--brand-overlay);
+}
+.mobile-record {
+  padding: 16px;
+  border: 1px solid var(--brand-border);
+  border-radius: 10px;
+  background: var(--brand-surface);
+  margin-bottom: 12px;
+}
+.mobile-record.selected {
+  border-color: var(--brand-primary);
+}
+.mobile-record-title {
+  font-size: 17px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+  margin-bottom: 12px;
+}
+.mobile-record-title a {
+  pointer-events: none;
+}
+.mobile-record-info {
+  display: grid;
+  grid-template-columns: minmax(90px, 0.8fr) minmax(0, 1.2fr);
+  gap: 8px 12px;
+  margin: 0;
+}
+.mobile-record-info dt {
+  color: var(--brand-muted);
+  font-size: 13px;
+}
+.mobile-record-info dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.mobile-record-actions {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.mobile-record-actions summary,
+.mobile-table-tools summary {
+  min-height: 44px;
+  padding: 12px 0;
+  color: var(--brand-primary);
+  cursor: pointer;
+  font-weight: 600;
+}
+.mobile-table-tools {
+  padding: 0 12px 12px;
+  border: 1px solid var(--brand-border);
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+.mobile-table-tools .field {
+  margin-top: 12px;
+}
+@media screen and (min-width: 721px) and (max-width: 999px) {
+  .list-detail:not(:has(> .detail-panel)),
+  .contracts-page:not(:has(> .detail-panel)) {
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .toast {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    width: auto;
+    max-width: none;
+  }
+  :root {
+    font-size: 14px;
+  }
+  .main-wrap {
+    width: 100%;
+    min-width: 0;
+  }
+  .main-content {
+    gap: 10px;
+  }
+  h1 {
+    font-size: 25px;
+  }
+  button,
+  input,
+  textarea,
+  select {
+    touch-action: manipulation;
+  }
+  input,
+  textarea,
+  select,
+  .select-pesquisavel input {
+    font-size: 16px;
+    min-height: 44px;
+  }
+  .btn,
+  .icon-btn,
+  .quiet-icon,
+  .pagination button,
+  .nav-item,
+  .nav-subitem {
+    min-height: 44px;
+  }
+  .quiet-icon,
+  .icon-btn {
+    min-width: 44px;
+  }
+  .topbar {
+    min-height: 60px;
+    gap: 8px;
+  }
+  .top-search {
+    min-width: 0;
+  }
+  .top-search input {
+    min-width: 0;
+    width: 100%;
+  }
+  .top-actions {
+    flex: none;
+  }
+  .sidebar {
+    width: min(300px, 85vw);
+    height: 100dvh;
+  }
+  .sidebar nav {
+    flex: 1;
+  }
+  .sidebar-close {
+    display: grid;
+    align-self: flex-end;
+    background: transparent;
+    color: var(--brand-surface);
+  }
+  .sidebar-unit {
+    flex: none;
+  }
+  .page-heading {
+    gap: 10px;
+    margin: 0;
+  }
+  .page-heading p {
+    margin-bottom: 0;
+    font-size: 13px;
+  }
+  .heading-actions {
+    width: 100%;
+    gap: 8px;
+  }
+  .heading-actions .btn {
+    flex: 1;
+  }
+  .status-cards {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    padding-bottom: 4px;
+  }
+  .status-card {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 8px 12px;
+  }
+  .status-card > span {
+    display: none;
+  }
+  .status-card strong,
+  .status-card small {
+    margin: 0;
+    font-size: 13px;
+  }
+  .main-content > .list-detail,
+  .main-content > .contracts-page {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
+    flex: 1;
+  }
+  .list-detail > .list-stack,
+  .contracts-left {
+    flex: 1;
+    min-height: 0;
+  }
+  .list-detail .data-table-scroll,
+  .contracts-left .data-table-scroll {
+    overflow: auto;
+    overscroll-behavior: contain;
+    padding: 2px;
+  }
+  .list-stack > .card,
+  .contracts-left > .card:not(.filter-card) {
+    padding: 12px;
+  }
+  .card-heading {
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .card-heading h2,
+  .card-heading h3 {
+    margin: 0;
+  }
+  .barra-filtros {
+    padding: 10px;
+    gap: 8px;
+    margin: 0;
+  }
+  .barra-filtros > .text-filter {
+    flex: 1 1 calc(100% - 110px);
+    min-width: 0;
+  }
+  .barra-filtros > .text-filter input {
+    width: 100%;
+    min-width: 0;
+  }
+  .mobile-filter-toggle {
+    display: flex;
+    flex: 0 0 auto;
+  }
+  .filter-controls {
+    display: none;
+  }
+  .filter-controls.open {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .filter-controls.open {
+    max-height: 30dvh;
+    overflow: auto;
+  }
+  .filter-controls .select-filter,
+  .filter-controls .field {
+    width: 100%;
+    min-width: 0;
+  }
+  .barra-filtros .limpar-filtros {
+    flex: 1 1 100%;
+  }
+  .barra-filtros .limpar-filtros:disabled {
+    display: none;
+  }
+  .mobile-detail-dialog .detail-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: none;
+    border: 0;
+    border-radius: 0;
+  }
+  .mobile-detail-dialog .detail-head {
+    flex-wrap: wrap;
+    padding: 14px;
+    gap: 10px;
+  }
+  .mobile-back-details {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: flex-start;
+  }
+  .mobile-detail-dialog .detail-body {
+    flex: 1;
+    overflow: auto;
+    min-height: 0;
+    max-height: none;
+    padding: 16px;
+  }
+  .mobile-detail-dialog .detail-footer {
+    flex: none;
+    padding: 12px 14px max(12px, env(safe-area-inset-bottom));
+    max-height: 35dvh;
+    overflow: auto;
+  }
+  .mobile-detail-dialog .tabs {
+    flex: none;
+    overflow-x: auto;
+  }
+  .mobile-record-code {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .mobile-compare {
+    flex: none;
+    margin-bottom: 8px;
+  }
+  .tabs button {
+    min-height: 44px;
+    flex: none;
+  }
+  .detail-head h2 {
+    overflow-wrap: anywhere;
+  }
+  .detail-rows {
+    grid-template-columns: minmax(90px, 0.8fr) minmax(0, 1.2fr);
+  }
+  .detail-rows dd {
+    overflow-wrap: anywhere;
+  }
+  .pagination {
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px 0 0;
+  }
+  .pagination > span:first-child {
+    flex-basis: 100%;
+    text-align: center;
+    font-size: 12px;
+  }
+  .pagination > div {
+    display: flex;
+    gap: 4px;
+  }
+  .pagination button {
+    min-width: 40px;
+  }
+  .main-content > .wizard {
+    padding: 10px;
+    overflow: hidden;
+  }
+  .wizard-steps {
+    gap: 4px;
+    margin: 0 0 10px;
+    display: flex;
+  }
+  .wizard-steps button {
+    flex: 1;
+    padding: 8px 2px;
+    gap: 5px;
+    flex-direction: column;
+    font-size: 11px;
+    min-width: 0;
+  }
+  .wizard-steps span {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+  .wizard-content {
+    overflow: auto;
+    min-height: 0;
+    overscroll-behavior: contain;
+    padding: 2px;
+    scroll-padding: 20px;
+  }
+  .wizard-grid {
+    gap: 18px;
+  }
+  .wizard-items {
+    display: block;
+    height: auto;
+    min-height: 0;
+  }
+  .wizard-items .card-heading {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .wizard-items .card-heading h3 {
+    grid-column: 1/-1;
+  }
+  .wizard-items .card-heading .btn {
+    padding: 8px;
+    font-size: 12px;
+  }
+  .wizard-items .table-scroll {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+  }
+  .wizard-items .budget-items-table {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+  .budget-items-table thead {
+    display: none;
+  }
+  .budget-items-table tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .budget-items-table tbody tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid var(--brand-border);
+    border-radius: 10px;
+    background: var(--brand-surface);
+  }
+  .wizard-items .budget-items-table td {
+    padding: 0;
+    min-width: 0;
+    width: auto;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    white-space: normal;
+  }
+  .budget-items-table td::before {
+    content: attr(data-label);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--brand-muted);
+  }
+  .budget-items-table td:nth-child(2) {
+    grid-column: 1/-1;
+  }
+  .budget-items-table input,
+  .budget-items-table .select-pesquisavel {
+    width: 100%;
+    min-width: 0;
+  }
+  .budget-items-table td:last-child {
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  .budget-items-table td:last-child::before {
+    display: none;
+  }
+  .budget-items-table td:last-child button {
+    min-width: 44px;
+    border: 1px solid #f0c5ca;
+    border-radius: 6px;
+    color: #b72e42;
+  }
+  .budget-final-bar {
+    flex: none;
+    position: static;
+    display: grid;
+    grid-template-columns: 90px minmax(0, 1fr);
+    margin: 10px -10px -10px;
+    padding: 10px 12px max(10px, env(safe-area-inset-bottom));
+    gap: 10px;
+  }
+  .budget-final-bar .wizard-footer-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    min-width: 0;
+    width: 100%;
+  }
+  .budget-bar-total {
+    margin: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .budget-bar-total small {
+    font-size: 11px;
+  }
+  .budget-bar-total strong {
+    font-size: 17px;
+  }
+  .budget-final-bar > .btn {
+    align-self: end;
+  }
+  .budget-final-bar .btn {
+    padding: 8px;
+    font-size: 13px;
+    white-space: normal;
+  }
+  .native-modal {
+    padding: 0;
+    background: transparent;
+  }
+  .native-modal .modal {
+    width: 100%;
+    max-width: none;
+    max-height: 100dvh;
+    height: 100dvh;
+    border-radius: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .modal-head {
+    padding: 14px;
+    flex: none;
+  }
+  .modal-body {
+    padding: 16px;
+    overflow: auto;
+    flex: 1;
+    min-height: 0;
+    scroll-padding: 20px;
+  }
+  .modal-footer {
+    padding: 12px 16px max(12px, env(safe-area-inset-bottom));
+    flex: none;
+    gap: 8px;
+  }
+  .modal-footer .btn {
+    flex: 1;
+  }
+  .select-options button {
+    min-height: 44px;
+    font-size: 15px;
+  }
+  .select-chevron {
+    top: 13px;
+  }
+  .form-grid,
+  .form-grid.four,
+  .two-cols,
+  .review-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .field {
+    min-width: 0;
+  }
+  .field textarea {
+    min-height: 110px;
+  }
+  .main-content > .contract-editor,
+  .mobile-form-flow {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    display: block;
+  }
+  .contract-editor > .card {
+    margin-bottom: 12px;
+  }
+  .date-pair {
+    flex-wrap: wrap;
+  }
+  .date-pair > * {
+    min-width: 0;
+    flex: 1 1 100%;
+  }
+  .button-row,
+  .button-pair {
+    flex-wrap: wrap;
+  }
+  .contract-preview {
+    padding: 20px 16px;
+    overflow: auto;
+    overflow-wrap: anywhere;
+  }
+  .signature-preview {
+    gap: 16px;
+  }
+  .main-content > .template-editor-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+    gap: 10px;
+  }
+  .template-mobile-tabs {
+    display: flex;
+    gap: 8px;
+    flex: none;
+  }
+  .template-mobile-tabs .btn {
+    flex: 1;
+  }
+  .template-editor-layout > .template-meta,
+  .template-editor-layout > .template-document,
+  .template-editor-layout > .template-variables {
+    flex: 1;
+    min-height: 0;
+    height: auto !important;
+    overflow: auto;
+  }
+  .template-editor-layout > .template-document {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .template-mode-documento > .template-meta,
+  .template-mode-documento > .template-variables,
+  .template-mode-identificacao > .template-document,
+  .template-mode-identificacao > .template-variables,
+  .template-mode-variaveis > .template-meta,
+  .template-mode-variaveis > .template-document {
+    display: none;
+  }
+  .template-editor-layout > .template-meta {
+    display: block;
+  }
+  .template-mode-documento > .template-meta,
+  .template-mode-variaveis > .template-meta {
+    display: none;
+  }
+  .template-meta .field {
+    width: 100%;
+  }
+  .template-variables .variable-group {
+    display: grid;
+    min-width: 0;
+    width: 100%;
+  }
+  .template-variables button {
+    min-height: 44px;
+    overflow-wrap: anywhere;
+  }
+  .template-document > .notice,
+  .template-document > .editor-toolbar {
+    padding: 8px 12px;
+    margin: 0;
+    font-size: 12px;
+    flex: none;
+  }
+  .template-document > .editor-toolbar small {
+    max-width: none;
+    text-align: left;
+  }
+  .editor-wrap {
+    min-width: 0;
+  }
+  .doc-toolbar-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .doc-tool-group {
+    flex: none;
+  }
+  .doc-toolbar button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .doc-toolbar .select-pesquisavel input {
+    min-height: 44px;
+    font-size: 16px;
+  }
+  .doc-sheet-workspace {
+    min-height: 120px;
+    padding: 8px;
+  }
+  .doc-sheet-workspace .contract-content-editor {
+    padding: 20px 16px;
+    min-height: 320px;
+    overflow-wrap: anywhere;
+  }
+  .doc-statusbar {
+    font-size: 11px;
+    flex-wrap: wrap;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px;
+  }
+  .stat {
+    min-width: 0;
+    gap: 6px;
+  }
+  .stat-icon,
+  .stat-trend {
+    display: none;
+  }
+  .stat-text strong {
+    font-size: 20px;
+    overflow-wrap: anywhere;
+  }
+  .stats-grid .cadastro-card {
+    padding: 16px;
+  }
+  .stats-grid:has(> .stat) {
+    display: flex !important;
+    overflow-x: auto;
+    gap: 8px;
+    padding-bottom: 4px;
+  }
+  .stats-grid:has(> .stat) > .stat {
+    flex: 0 0 160px;
+    min-height: 80px;
+  }
+  .dashboard-conteudo {
+    overflow: auto;
+  }
+  .agenda-operacional {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+  }
+  .agenda-operacional > .card {
+    flex: none;
+    min-height: 0;
+    overflow: visible;
+  }
+  .agenda-operacional > .card:first-child {
+    min-height: 360px;
+  }
+  .agenda-operacional .card-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .agenda-operacional .card-heading > .button-pair {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .calendario-grade {
+    grid-template-rows: repeat(6, minmax(48px, 1fr));
+    overflow: visible;
+  }
+  .calendario-dia {
+    min-height: 48px;
+  }
+  .calendario-evento {
+    font-size: 10px;
+  }
+  .agenda-dia-lista {
+    overflow: visible;
+  }
+  .calendario-modal {
+    width: calc(100vw - 16px);
+    padding: 12px;
+  }
+  .calendario-modal-semana [role="gridcell"] button {
+    height: 44px;
+  }
+  .calendario-modal-navegacao {
+    grid-template-columns: 40px minmax(0, 1fr) 85px 40px;
+  }
+  .calendario-modal-navegacao .btn {
+    width: 40px;
+  }
+  .calendario-modal-navegacao .select-pesquisavel input {
+    height: 44px;
+    font-size: 14px;
+  }
+
+  /* No celular a página acompanha o conteúdo; o desktop mantém o viewport fixo. */
+  html,
+  body,
+  #root {
+    height: auto;
+    overflow: visible;
+  }
+  .app-layout {
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+  .main-wrap {
+    height: auto;
+    min-height: 100dvh;
+  }
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+  .main-content {
+    display: block;
+    overflow: visible;
+    min-height: 0;
+  }
+  .main-content > * + * {
+    margin-top: 12px;
+  }
+  .main-content > .list-detail,
+  .main-content > .contracts-page,
+  .list-detail > .list-stack,
+  .contracts-left {
+    display: block;
+    overflow: visible;
+    height: auto;
+  }
+  .main-content > .card,
+  .main-content > .dashboard-row,
+  .main-content > .settings-layout,
+  .list-detail > .card,
+  .list-stack > .card,
+  .contracts-left > .card:not(.filter-card) {
+    overflow: visible;
+    height: auto;
+    min-height: 0;
+  }
+  .mobile-records,
+  .list-detail .mobile-records,
+  .contracts-left .mobile-records {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+  .table-scroll,
+  .list-detail .data-table-scroll,
+  .contracts-left .data-table-scroll {
+    height: auto;
+    max-height: none;
+  }
+  .list-detail .mobile-records,
+  .contracts-left .mobile-records {
+    overflow: visible;
+  }
+  .table-scroll {
+    overflow-x: auto;
+  }
+  .main-content > .wizard {
+    height: auto;
+    overflow: visible;
+  }
+  .wizard {
+    scroll-margin-top: 72px;
+  }
+  .wizard-content {
+    overflow: visible;
+    height: auto;
+  }
+  .budget-final-bar {
+    position: sticky;
+    bottom: 0;
+    z-index: 15;
+  }
+  .mobile-form-flow,
+  .main-content > .contract-editor,
+  .dashboard-conteudo,
+  .agenda-operacional {
+    height: auto;
+    overflow: visible;
+  }
+  .agenda-operacional > .card:first-child {
+    min-height: 0;
+  }
+  .main-content > .template-editor-layout {
+    height: auto;
+    overflow: visible;
+  }
+  .template-editor-layout > .template-meta,
+  .template-editor-layout > .template-document,
+  .template-editor-layout > .template-variables {
+    height: auto !important;
+    overflow: visible;
+  }
+  .template-document .editor-wrap {
+    height: auto;
+    min-height: 0;
+  }
+  .doc-sheet-workspace,
+  .template-document .doc-sheet-workspace {
+    overflow: visible;
+    flex: none;
+  }
+  .template-document .editor-wrap > div:has(> .contract-content-editor) {
+    overflow: visible;
+  }
+  .doc-sheet-workspace .contract-content-editor {
+    min-height: 320px;
+    overflow: visible;
+  }
+}
+
+/* Agenda: reservar largura para a matriz e altura para os compromissos. */
+@media (min-width: 1000px) {
+  .agenda-operacional {
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 300px);
+  }
+}
+@media (min-width: 721px) and (max-width: 999px) {
+  .agenda-operacional {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 2fr) minmax(160px, 1fr);
+  }
+}
+.calendario-grade {
+  grid-template-rows: repeat(6, minmax(72px, 1fr));
+}
+.calendario-dia {
+  padding: 8px;
+}
+@media (max-width: 720px) {
+  .calendario-grade {
+    grid-template-rows: repeat(6, minmax(72px, auto));
+  }
+  .calendario-dia {
+    min-height: 72px;
+    padding: 6px;
+  }
+  .calendario-dia small {
+    font-size: 11px;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* O documento rola dentro de uma área limitada enquanto o texto aumenta. */
+.doc-sheet-workspace,
+.template-document .doc-sheet-workspace {
+  flex: none;
+  height: clamp(280px, 55dvh, 620px);
+  min-height: 0;
+  max-height: 620px;
+  overflow: auto;
+}
+@media (max-width: 720px) {
+  .doc-sheet-workspace,
+  .template-document .doc-sheet-workspace {
+    height: clamp(240px, 50dvh, 480px);
+    max-height: 480px;
+    overflow: auto;
+  }
+}
+
+.field textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 120px;
+  max-height: 300px;
+  padding: 10px 12px;
+  border: 1px solid var(--brand-border);
+  border-radius: 7px;
+  font: inherit;
+  color: var(--brand-text);
+  background: var(--brand-surface);
+  resize: vertical;
+  overflow-y: auto;
+  overflow-wrap: anywhere;
+}
+
+.contract-content-actions {
+  margin-top: 18px;
+  margin-bottom: 14px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.restore-contract {
+  margin: 12px 0;
+}
+.contract-draft-editor .doc-sheet-workspace {
+  background: var(--brand-surface);
+}
+.contract-draft-editor .doc-sheet-workspace .contract-draft {
+  max-height: none;
+  overflow: visible;
+  background: var(--brand-surface);
+}
+
+/* Desktop: a folha ocupa somente a altura restante após as ferramentas. */
+@media (min-width: 721px) {
+  .main-content > .template-editor-layout {
+    flex: 1;
+    height: auto;
+    min-height: 0;
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+  .template-editor-layout > .template-document {
+    overflow: hidden;
+  }
+  .template-document .editor-wrap {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+  .template-document .doc-sheet-workspace {
+    flex: 1;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    overflow: auto;
+  }
+}
+
+@media (min-width: 721px) and (max-width: 1180px) {
+  .main-content > .template-editor-layout {
+    grid-template-rows: auto minmax(0, 1fr) 100px;
+  }
+}
+
+.calendario-dia.com-servicos {
+  background: var(--dia-fundo);
+  border-color: var(--dia-borda);
+  border-top: 3px solid var(--dia-cor);
+}
+.calendario-dia-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.calendario-dia-etiqueta {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  border-radius: 5px;
+  font-size: 10px;
+  line-height: 1.4;
+  font-weight: 700;
+  color: var(--brand-surface);
+  background: var(--dia-cor);
+}
+.calendario-dia.com-servicos .calendario-evento {
+  background: var(--dia-fundo);
+  color: var(--dia-cor);
+  border-left: 3px solid var(--dia-cor);
+  padding: 2px 4px;
+}
+.calendario-dia.com-servicos.selecionado {
+  background: var(--dia-fundo);
+  box-shadow: inset 0 0 0 2px var(--brand-primary);
+}
+.calendario-dia:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: -3px;
+}
+@media (max-width: 720px) {
+  .calendario-dia-etiqueta {
+    padding: 2px 5px;
+    font-size: 11px;
+  }
+}
+
+/* Modelos: rolagem de todo o conteúdo, além da área de escrita limitada. */
+@media (min-width: 721px) {
+  .main-content:has(> .template-editor-layout) {
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .main-content:has(> .template-editor-layout) > .page-heading {
+    margin-bottom: 16px;
+  }
+  .main-content > .template-editor-layout {
+    flex: none;
+    height: auto;
+    overflow: visible;
+    grid-template-rows: auto auto;
+    align-items: start;
+  }
+  .template-editor-layout > .template-document,
+  .template-editor-layout > .template-variables {
+    height: auto !important;
+    overflow: visible;
+  }
+  .template-document .editor-wrap {
+    flex: none;
+    overflow: visible;
+  }
+  .template-document .doc-sheet-workspace {
+    flex: none;
+    height: clamp(280px, 55dvh, 620px);
+    max-height: 620px;
+    overflow: auto;
+  }
+}
+
+.template-version-history {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+.template-version-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border: 1px solid var(--brand-border);
+  border-radius: 8px;
+}
+.template-version-row > div {
+  display: grid;
+  gap: 4px;
+}
+.template-version-row small {
+  color: var(--brand-muted);
+}
+@media (max-width: 720px) {
+  .template-version-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+.template-history-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+}
+.template-history-pagination > span {
+  font-size: 13px;
+  color: var(--brand-muted);
+}
+.template-history-footer {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+}
+.template-history-footer .template-history-pagination {
+  margin: 0;
+}
+
+/* No desktop, documento e variáveis compartilham a altura da mesma linha. */
+@media (min-width: 1181px) {
+  .main-content > .template-editor-layout {
+    align-items: stretch;
+  }
+  .template-editor-layout > .template-document {
+    height: 100% !important;
+    min-height: 0;
+    overflow: hidden;
+  }
+  .template-document .editor-wrap {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+  .template-document .doc-sheet-workspace {
+    flex: 1;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    overflow: auto;
+  }
+}
+@media (min-width: 1181px) {
+  .template-editor-layout > .template-document {
+    contain: size;
+  }
+}

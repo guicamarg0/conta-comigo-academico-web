@@ -1,0 +1,213 @@
+.onboarding-checkpoint-wrap,
+.onboarding-guia-pagina,
+.onboarding-apresentacao,
+.onboarding-etapas,
+.onboarding-progresso,
+.onboarding-contagem,
+.onboarding-sucesso {
+  --primary: var(--brand-primary);
+  --border: var(--brand-border);
+  --text: var(--brand-text);
+  --muted: var(--brand-muted);
+}
+.onboarding-checkpoint-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.onboarding-checkpoint {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--brand-soft-blue);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  max-width: 280px;
+}
+.onboarding-checkpoint strong,
+.onboarding-checkpoint small {
+  display: block;
+}
+.onboarding-checkpoint strong {
+  font-size: 12px;
+}
+.onboarding-checkpoint small {
+  font-size: 11px;
+  color: var(--muted);
+}
+.onboarding-percentual {
+  display: grid;
+  place-items: center;
+  min-width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: white;
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 600;
+}
+.onboarding-ver {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 10px;
+  font: inherit;
+  font-size: 12px;
+}
+.onboarding-progresso {
+  height: 6px;
+  border-radius: 6px;
+  background: var(--brand-border);
+  overflow: hidden;
+}
+.onboarding-progresso span {
+  display: block;
+  height: 100%;
+  background: var(--primary);
+}
+.onboarding-contagem {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 10px 0 18px;
+}
+.onboarding-etapas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 18px;
+}
+.onboarding-etapas li {
+  display: flex;
+  gap: 12px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+.onboarding-etapas li > div {
+  min-width: 0;
+}
+.onboarding-etapas p {
+  font-size: 13px;
+  margin: 6px 0 10px;
+  color: var(--muted);
+}
+.onboarding-etapas .btn {
+  margin: 0 6px 6px 0;
+}
+.onboarding-etapas small {
+  font-size: 11px;
+  color: var(--primary);
+}
+.onboarding-numero {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  font-size: 12px;
+}
+.onboarding-numero.concluido {
+  background: #eaf8ef;
+  color: #157347;
+  border-color: transparent;
+}
+.onboarding-etapas .atual .onboarding-numero {
+  background: var(--primary);
+  color: white;
+}
+.onboarding-apresentacao {
+  padding: 8px 0;
+}
+.onboarding-apresentacao > svg {
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+.onboarding-apresentacao h2 {
+  font-size: 24px;
+  margin: 12px 0;
+}
+.onboarding-apresentacao p {
+  line-height: 1.6;
+}
+.onboarding-fluxo {
+  padding: 12px 0;
+  color: var(--muted);
+}
+.onboarding-unidade {
+  background: var(--brand-soft-blue);
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+.onboarding-sucesso {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  background: #eaf8ef;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  color: #157347;
+}
+.onboarding-sucesso p {
+  margin: 0;
+}
+.onboarding-guia-pagina {
+  overflow: auto;
+  min-height: 0;
+  padding: 22px;
+}
+@media (max-width: 1100px) {
+  .onboarding-ver span {
+    display: none;
+  }
+  .onboarding-checkpoint {
+    max-width: 235px;
+  }
+}
+@media (max-width: 767px) {
+  .topbar:has(.onboarding-checkpoint-wrap) {
+    flex-wrap: wrap;
+    height: auto;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .topbar:has(.onboarding-checkpoint-wrap) .top-actions {
+    display: contents;
+  }
+  .onboarding-checkpoint-wrap {
+    order: 3;
+    flex-basis: 100%;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .onboarding-checkpoint {
+    flex: 1;
+    max-width: none;
+  }
+  .onboarding-ver span {
+    display: inline;
+  }
+  .onboarding-checkpoint,
+  .onboarding-ver {
+    min-height: 44px;
+  }
+  .onboarding-guia-pagina {
+    overflow: visible;
+  }
+  .onboarding-apresentacao h2 {
+    font-size: 21px;
+  }
+}
