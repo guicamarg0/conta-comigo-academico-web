@@ -1,4 +1,4 @@
-import {
+﻿import {
   orcamentoDaApi,
   orcamentoParaApi,
   orcamentoParaFormulario,
@@ -313,6 +313,8 @@ export function OrcamentosConectados() {
                 rows={[
                   ["Cliente", selecionado.cliente],
                   ["Referência", selecionado.referencia],
+                  ["Subtotal", moeda(selecionado.subtotal)],
+                  ["Desconto aplicado", `− ${moeda(selecionado.descontoTotal)}`],
                   ["Valor total", moeda(selecionado.valor)],
                   ["Status", <Badge>{selecionado.status}</Badge>],
                   ["Validade", selecionado.validade],
@@ -388,6 +390,8 @@ export function NovoOrcamentoConectado() {
     pagamento: "",
     condicao: "",
     observacoes: "",
+    descontoTipo: "VALOR",
+    descontoValor: 0,
     itens: [{ ...itemInicial }],
   });
   const quantidadeAnterior = useRef(form.itens.length);
@@ -450,10 +454,23 @@ export function NovoOrcamentoConectado() {
       ativo = false;
     };
   }, [editarId, unidade]);
-  const total = form.itens.reduce(
-    (s, i) => s + Number(i.quantidade || 0) * Number(i.valor || 0),
-    0,
-  );
+  const subtotal = Math.round(
+    form.itens.reduce(
+      (s, i) => s + Number(i.quantidade || 0) * Number(i.valor || 0),
+      0,
+    ) * 100,
+  ) / 100;
+  const valorDesconto = Number(form.descontoValor) || 0;
+  const brutoDesconto =
+    form.descontoTipo === "PERCENTUAL"
+      ? (subtotal * Math.min(valorDesconto, 100)) / 100
+      : valorDesconto;
+  const descontoCalculado = Math.round(brutoDesconto * 100) / 100;
+  const descontoAplicado = Math.min(subtotal, descontoCalculado);
+  const total = Math.max(0, Math.round((subtotal - descontoAplicado) * 100) / 100);
+  const descontoInvalido =
+    (form.descontoTipo === "PERCENTUAL" && valorDesconto > 100) ||
+    descontoCalculado > subtotal;
   useEffect(() => {
     if (etapa === 1 && listaItensRef.current) {
       if (window.matchMedia("(max-width:720px)").matches) {
@@ -573,6 +590,12 @@ export function NovoOrcamentoConectado() {
     )
       return setErro(
         "Preencha descrição, quantidade, unidade e valor dos itens.",
+      );
+    if (etapa === 2 && descontoInvalido)
+      return setErro(
+        form.descontoTipo === "PERCENTUAL" && valorDesconto > 100
+          ? "O desconto percentual não pode ser maior que 100%."
+          : "O desconto não pode deixar o total do orçamento negativo.",
       );
     setErro("");
     setEtapa(Math.min(3, etapa + 1));
@@ -939,6 +962,26 @@ export function NovoOrcamentoConectado() {
               <div>
                 <h3>Condições comerciais</h3>
                 <div className="form-grid">
+                  <Field label="Tipo de desconto geral">
+                    <select
+                      value={form.descontoTipo}
+                      onChange={(e) => alterar("descontoTipo", e.target.value)}
+                    >
+                      <option value="VALOR">Valor fixo (R$)</option>
+                      <option value="PERCENTUAL">Percentual (%)</option>
+                    </select>
+                  </Field>
+                  <Field label="Desconto geral">
+                    <input
+                      type="number"
+                      inputMode="decimal"
+                      min="0"
+                      max={form.descontoTipo === "PERCENTUAL" ? "100" : undefined}
+                      step="0.01"
+                      value={form.descontoValor}
+                      onChange={(e) => alterar("descontoValor", e.target.value)}
+                    />
+                  </Field>
                   <Field label="Forma de pagamento">
                     <SelectPesquisavel
                       value={form.pagamento}
@@ -1000,10 +1043,18 @@ export function NovoOrcamentoConectado() {
               <Card title="Resumo financeiro">
                 <DetailRows
                   rows={[
-                    ["Subtotal", moeda(total)],
+                    ["Subtotal", moeda(subtotal)],
+                    ["Desconto aplicado", `− ${moeda(descontoAplicado)}`],
                     ["Total", moeda(total)],
                   ]}
                 />
+                {descontoInvalido && (
+                  <p className="inline-error" role="alert">
+                    {form.descontoTipo === "PERCENTUAL" && valorDesconto > 100
+                      ? "O desconto percentual não pode ser maior que 100%."
+                      : "O desconto não pode deixar o total do orçamento negativo."}
+                  </p>
+                )}
               </Card>
             </div>
           )}
@@ -1032,7 +1083,13 @@ export function NovoOrcamentoConectado() {
                 O orçamento será emitido pela API e poderá ser baixado em PDF
                 após salvar.
               </p>
-              <h2 className="wizard-total">Total: {moeda(total)}</h2>
+              <DetailRows
+                rows={[
+                  ["Subtotal", moeda(subtotal)],
+                  ["Desconto aplicado", `− ${moeda(descontoAplicado)}`],
+                  ["Total", <strong>{moeda(total)}</strong>],
+                ]}
+              />
             </>
           )}
         </div>
@@ -1102,7 +1159,10 @@ export function NovoOrcamentoConectado() {
             <button
               className="btn primary"
               disabled={
-                salvando || carregandoBase || Boolean(editarId && !criadoId)
+                salvando ||
+                carregandoBase ||
+                Boolean(editarId && !criadoId) ||
+                (etapa === 3 && descontoInvalido)
               }
               onClick={() => (etapa === 3 ? salvar(podeEmitir) : avancar())}
             >

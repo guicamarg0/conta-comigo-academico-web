@@ -1,4 +1,4 @@
-import {
+﻿import {
   orcamentoParaApi,
   orcamentoDaApi,
   orcamentoParaFormulario,
@@ -35,6 +35,8 @@ test("rascunho reabre com cliente, condições e itens do catálogo", () => {
       condicoesPagamento: "Pix · 30 dias",
       referencia: "Reparo · linha A",
       observacoesComerciais: "Garantia de 6 meses",
+      descontoTipo: "PERCENTUAL",
+      descontoValor: 12.5,
       exibirAssinatura: false,
       exibirPagamento: false,
       itens: [
@@ -55,6 +57,8 @@ test("rascunho reabre com cliente, condições e itens do catálogo", () => {
   assert.equal(form.exibirPagamento, false);
   assert.equal(form.referencia, "Reparo · linha A");
   assert.equal(form.observacoes, "Garantia de 6 meses");
+  assert.equal(form.descontoTipo, "PERCENTUAL");
+  assert.equal(form.descontoValor, 12.5);
   assert.deepEqual(form.itens[0], {
     tipo: "Mão de obra",
     catalogoId: "item-1",
@@ -97,6 +101,8 @@ test("orçamento usa IDs da unidade e calcula validade", () => {
       data: "2026-09-28",
       validade: "30 dias",
       pagamento: "Transferência",
+      descontoTipo: "PERCENTUAL",
+      descontoValor: 12.5,
       itens: [
         {
           tipo: "Peça",
@@ -117,6 +123,8 @@ test("orçamento usa IDs da unidade e calcula validade", () => {
   assert.equal(payload.itens[0].itemCatalogoId, "item-1");
   assert.equal(payload.itens[0].descricao, "Rolamento especial");
   assert.equal(payload.itens[0].tipo, "PECA");
+  assert.equal(payload.descontoTipo, "PERCENTUAL");
+  assert.equal(payload.descontoValor, 12.5);
   assert.throws(
     () =>
       orcamentoParaApi({ cliente: "outro", itens: [{}] }, clientes, catalogo),
@@ -137,6 +145,10 @@ test("lista usa cliente da revisão e evento mais recente", () => {
       observacoesComerciais: "Observação",
       condicoesPagamento: "Pix",
       totalFinal: 900,
+      subtotal: 1000,
+      descontoTipo: "VALOR",
+      descontoValor: 100,
+      descontoTotal: 100,
       itens: [
         { descricao: "Serviço", quantidade: 1, valorUnitario: 900, total: 900 },
       ],
@@ -150,5 +162,9 @@ test("lista usa cliente da revisão e evento mais recente", () => {
   assert.equal(item.data, "02/10/2026");
   assert.equal(item.referencia, "Referência da proposta");
   assert.equal(item.quantidadeItens, 1);
+  assert.equal(item.subtotal, 1000);
+  assert.equal(item.descontoTipo, "VALOR");
+  assert.equal(item.descontoValor, 100);
+  assert.equal(item.descontoTotal, 100);
   assert.equal(item.pagamento, "Pix");
 });
